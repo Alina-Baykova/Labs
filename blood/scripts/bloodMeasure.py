@@ -7,8 +7,6 @@ GPIO.setmode(GPIO.BCM)
 b.initSpiAdc()
 
 PRESSURE_LOWER_BOUND = 450
-calibr = False
-if calibr is False:
     try:
         data = []
         start = time.time()
@@ -32,28 +30,16 @@ if calibr is False:
         plt.show()
     finally:
         b.deinitSpiAdc()
-else:
-    try:
-        data = []
-
-        start = time.time()
         
-
+   ''' try:
+        data = []
+        start = time.time()
         while True:
             now = time.time()
             current_data = b.getAdc()
             data.append(current_data)
-
             if now - start >= 60:
-                break
-                 
-        finish = time.time()
+                break  
+        finish = time.time()'''
 
-        b.save(data, start, finish)
-    except KeyboardInterrupt:
-        finish = time.time()
-        b.save(data, start, finish)
-        plt.plot(data)
-        plt.show()
-    finally:
-        b.deinitSpiAdc()
+       
